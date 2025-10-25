@@ -1,0 +1,204 @@
+0 → Production রোডম্যাপ (ফেজ + চেকলিস্ট)
+ফেজ 1: Discovery & Planning
+
+লক্ষ্য: কী বানাচ্ছি, কার জন্য, কী MVP হবে।
+
+Problem statement + goals
+
+Target users + basic UX flows (Login → Dashboard → CRUD)
+
+MVP scope (must-have vs nice-to-have)
+
+Tech choices: React (Vite), Express, Supabase (DB+Auth), Tailwind, Vercel/Render
+
+Success metrics: DAU/WAU, signups, time-to-first-value
+
+ডেলিভারেবল: PRD (এক পাতার), Wireframe স্কেচ, Feature list (MVP)
+
+ফেজ 2: Project Setup (Monorepo/Polyrepo যেটা ইচ্ছা)
+
+লক্ষ্য: Dev env চালু।
+
+Repo init (Git + GitHub)
+
+Frontend init: npm create vite@latest
+
+Backend init: npm init -y + express, cors, dotenv, @supabase/supabase-js
+
+Package scripts (dev, build, start)
+
+Editor config (Prettier/ESLint), Node version
+
+ডেলিভারেবল: npm run dev এ FE/BE লোকালি চালু
+
+ফেজ 3: Supabase (DB + Auth)
+
+লক্ষ্য: ডাটাবেইস + অথ বানানো।
+
+Project create, copy: SUPABASE_URL, anon key, service role key
+
+Auth providers: Email/Password + Google (redirect URL allowlist)
+
+SQL schema: tables (app_users, jobs, interviews)
+
+RLS policies (user-ownership)
+
+Seed data (optional)
+
+ডেলিভারেবল: SQL স্ক্রিপ্ট রানড; টেবিল/পলিসি রেডি
+
+ফেজ 4: Backend API (Express)
+
+লক্ষ্য: REST endpoints + Supabase CRUD।
+
+db.js (Supabase client - service role)
+
+auth middleware (verify token via anon client)
+
+Routes + Controllers:
+
+/users → profile create/get
+
+/jobs → CRUD
+
+/interviews → CRUD (job ownership check)
+
+Error handling, validation (basic)
+
+Postman collection (manual test)
+
+ডেলিভারেবল: Local API works, protected by Bearer token
+
+ফেজ 5: Frontend Foundation
+
+লক্ষ্য: UI skeleton + routing + auth context।
+
+Tailwind setup
+
+React Router: /login, /signup, /dashboard, /jobs, /interviews
+
+Supabase client (frontend) → Auth (email/pass + Google)
+
+AuthContext (session, token, guards)
+
+Basic Navbar + layout
+
+ডেলিভারেবল: Login/Signup flow works end-to-end
+
+ফেজ 6: Features (MVP UI + CRUD)
+
+লক্ষ্য: ইউজার যেন কাজ করতে পারে।
+
+Jobs: JobForm, JobList (create, list, delete, update optional)
+
+Interviews: InterviewForm, InterviewList
+
+Dashboard: stats (status counts), upcoming interviews
+
+Toast/alerts for success/error
+
+Loading/empty/error states
+
+ডেলিভারেবল: All core flows usable, refresh-safe (fetch on mount)
+
+ফেজ 7: Quality & Testing
+
+লক্ষ্য: বাগ কমানো, স্থির করা।
+
+Unit tests (key utils/components)
+
+API integration tests (supertest optional)
+
+Manual QA checklist (auth, CRUD, RLS restrictions)
+
+Performance sanity (bundle size check), Lighthouse basic
+
+Accessibility quick pass (labels, focus order)
+
+ডেলিভারেবল: Test scripts + QA pass notes
+
+ফেজ 8: Security & Config
+
+লক্ষ্য: প্রডাকশনের জন্য সেফ সেটআপ।
+
+Secrets in .env only (never commit)
+
+CORS allowlist (frontend domain)
+
+Rate limit (basic, e.g., proxy-level later)
+
+Supabase policies double-check (no broad all)
+
+Error logging (console + platform logs)
+
+ডেলিভারেবল: Secure envs + policies verified
+
+ফেজ 9: CI/CD & Build
+
+লক্ষ্য: বিল্ড ও ডিপ্লয় অটোমেট।
+
+Frontend build: npm run build → dist/
+
+Backend start: node server.js (or pnpm start)
+
+GitHub Actions (optional): lint/test/build
+
+Environment matrices (dev/stage/prod)
+
+ডেলিভারেবল: Green pipeline, artifacts produce হচ্ছে
+
+ফেজ 10: Deploy (Go Live)
+
+লক্ষ্য: Production এ অ্যাপ লাইভ।
+
+Frontend → Vercel/Netlify (point to dist)
+
+Backend → Render/Railway/Fly.io (set env vars)
+
+Supabase → live DB/Auth
+
+Frontend .env এ VITE_API_BASE প্রড URL
+
+Domain connect + HTTPS (Vercel/Netlify auto SSL)
+
+ডেলিভারেবল: Public URL live + API reachable
+
+ফেজ 11: Observability & Maintenance
+
+লক্ষ্য: লাইভের পর মনিটরিং।
+
+Logs (Vercel/Render dashboards)
+
+Error tracking (optional: Sentry)
+
+DB backups (Supabase auto)
+
+Analytics (privacy-conscious)
+
+Roadmap v2 features
+
+ডেলিভারেবল: Ops checklist + on-call basics
+
+টাস্ক চেকলিস্ট (শর্ট ভার্সন)
+
+ Repo + FE/BE init
+
+ Supabase project + schema + RLS
+
+ Express API + auth middleware
+
+ FE Auth (email/pass + Google)
+
+ CRUD UI (Jobs/Interviews)
+
+ Dashboard stats + upcoming
+
+ Toast/alerts + states
+
+ Tests + QA + A11y pass
+
+ Build + CI/CD
+
+ Deploy (FE+BE) + Domain + SSL
+
+ Logs/Backups/Analytics
