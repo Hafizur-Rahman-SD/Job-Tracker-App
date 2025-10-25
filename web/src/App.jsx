@@ -1,7 +1,27 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AuthProvider, { useAuth } from './context/AuthContext';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Jobs from './pages/Jobs';
+import Dashboard from './pages/Dashboard';
+
+function Private({ children }) {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
+}
+
 export default function App() {
   return (
-    <div className="p-10 text-center">
-      <h1 className="text-4xl font-bold text-blue-600">Tailwind is Working! 🚀</h1>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/jobs" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/jobs" element={<Private><Jobs /></Private>} />
+          <Route path="/dashboard" element={<Private><Dashboard /></Private>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }

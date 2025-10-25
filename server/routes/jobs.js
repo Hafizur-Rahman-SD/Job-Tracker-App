@@ -1,17 +1,17 @@
+// server/routes/jobs.js
 import { Router } from 'express';
-import { supabaseAdmin } from '../db.js';
+import { requireAuth } from '../middleware/auth.js';
+import {
+  listJobs, getJob, createJob, updateJob, deleteJob
+} from '../controllers/jobsController.js';
 
 const router = Router();
+router.use(requireAuth);
 
-// GET /jobs  → all jobs (temporary, no auth yet)
-router.get('/', async (_req, res) => {
-  const { data, error } = await supabaseAdmin
-    .from('jobs')
-    .select('*')
-    .order('created_at', { ascending: false });
-
-  if (error) return res.status(400).json({ error: error.message });
-  res.json(data);
-});
+router.get('/', listJobs);
+router.get('/:id', getJob);
+router.post('/', createJob);
+router.put('/:id', updateJob);
+router.delete('/:id', deleteJob);
 
 export default router;
