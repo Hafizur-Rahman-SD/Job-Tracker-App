@@ -9,13 +9,15 @@ export default function JobForm({ onJobAdded }) {
     company: "",
     position: "",
     status: "Applied",
-    date_applied: "",
+    apply_link: "",
     note: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) return alert("Please login first!");
+    if (!user) return alert("Please login first");
+    setLoading(true);
 
     const { error } = await supabase.from("jobs").insert([
       {
@@ -24,33 +26,32 @@ export default function JobForm({ onJobAdded }) {
         company: form.company,
         position: form.position,
         status: form.status,
-        date_applied: form.date_applied,
+        apply_link: form.apply_link,
         note: form.note,
       },
     ]);
 
+    setLoading(false);
     if (error) alert(error.message);
     else {
-      alert("Job added successfully!");
       setForm({
         title: "",
         company: "",
         position: "",
         status: "Applied",
-        date_applied: "",
+        apply_link: "",
         note: "",
       });
-      if (onJobAdded) onJobAdded();
+      onJobAdded();
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl p-4 shadow space-y-3 mt-4"
+      className="bg-white rounded-2xl p-4 shadow space-y-3"
     >
-      <h2 className="text-xl font-semibold text-gray-800">Add New Job</h2>
-
+      <h2 className="text-lg font-semibold text-gray-800">Add New Job</h2>
       <input
         className="input"
         placeholder="Job Title"
@@ -63,6 +64,7 @@ export default function JobForm({ onJobAdded }) {
         placeholder="Company"
         value={form.company}
         onChange={(e) => setForm({ ...form, company: e.target.value })}
+        required
       />
       <input
         className="input"
@@ -80,22 +82,24 @@ export default function JobForm({ onJobAdded }) {
         <option>Offer</option>
         <option>Rejected</option>
       </select>
-
       <input
         className="input"
-        type="date"
-        value={form.date_applied}
-        onChange={(e) => setForm({ ...form, date_applied: e.target.value })}
+        placeholder="Apply Link (optional)"
+        value={form.apply_link}
+        onChange={(e) => setForm({ ...form, apply_link: e.target.value })}
       />
-
       <textarea
         className="input"
-        placeholder="Notes (optional)"
+        placeholder="Notes"
         value={form.note}
         onChange={(e) => setForm({ ...form, note: e.target.value })}
       />
-
-      <button className="btn w-full bg-gray-900 text-white">Save Job</button>
+      <button
+        disabled={loading}
+        className="btn bg-blue-600 hover:bg-blue-700 text-white w-full"
+      >
+        {loading ? "Saving..." : "Save Job"}
+      </button>
     </form>
   );
 }

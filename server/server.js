@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import jobsRoutes from './routes/jobs.js';
+import jobsRoutes from './routes/jobsRoutes.js';
 
 const app = express();
 
