@@ -202,3 +202,77 @@ Roadmap v2 features
  Deploy (FE+BE) + Domain + SSL
 
  Logs/Backups/Analytics
+
+
+
+ 📍 Stage 1 — Setup & Project Structure
+
+🎯 লক্ষ্য: তোমার লোকাল মেশিনে React + Express প্রজেক্ট সেটআপ করা।
+
+তুমি শিখবে:
+
+Folder structure তৈরি করা
+
+Backend (Express) install
+
+Frontend (React + Vite) install
+
+Supabase প্রজেক্ট তৈরি করা
+
+.env ফাইল configure করা
+
+📍 Stage 2 — Backend (Express + Supabase)
+
+🎯 লক্ষ্য: Server বানানো, Supabase connect করা, এবং /jobs API তৈরি করা।
+
+তুমি শিখবে:
+
+REST API বানানো
+
+Supabase client connect করা
+
+CRUD route বানানো
+
+Token-based user verify করা (middleware)
+
+📍 Stage 3 — Frontend (React + Tailwind)
+
+🎯 লক্ষ্য: UI বানানো + Auth context তৈরি করা।
+
+তুমি শিখবে:
+
+Login / Signup পেজ তৈরি
+
+Google Login add করা
+
+AuthContext দিয়ে user state রাখা
+
+Protected route (private pages)
+
+📍 Stage 4 — Core Feature (Job Form + Job List)
+
+🎯 লক্ষ্য: Data add করা ও দেখানো।
+
+তুমি শিখবে:
+
+Form দিয়ে data insert করা
+
+API call করা (fetch/axios)
+
+Job List থেকে data load করা
+
+Toast message ব্যবহার করা
+
+📍 Stage 5 — Deploy to Production
+
+🎯 লক্ষ্য: App টি লাইভ করা।
+
+তুমি শিখবে:
+
+Backend deploy on Render
+
+Frontend deploy on Vercel
+
+Environment variables setup
+
+Supabase connected live project test করা
