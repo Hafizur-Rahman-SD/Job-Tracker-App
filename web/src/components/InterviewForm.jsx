@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 export default function InterviewForm({ onAdded }) {
+  const { user } = useAuth();
+  const [jobs, setJobs] = useState([]);
   const [form, setForm] = useState({
     job_id: "",
     date: "",
@@ -11,6 +14,18 @@ export default function InterviewForm({ onAdded }) {
   });
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (user) fetchJobs();
+  }, [user]);
+
+  const fetchJobs = async () => {
+    const { data } = await supabase
+      .from("jobs")
+      .select("id, title, company")
+      .eq("user_id", user.id);
+    setJobs(data || []);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -18,6 +33,7 @@ export default function InterviewForm({ onAdded }) {
     setLoading(false);
     if (error) alert(error.message);
     else {
+      alert("Interview added!");
       setForm({ job_id: "", date: "", time: "", address: "", email: "" });
       onAdded();
     }
@@ -29,13 +45,21 @@ export default function InterviewForm({ onAdded }) {
       className="bg-white rounded-2xl p-4 shadow space-y-3"
     >
       <h2 className="text-lg font-semibold text-gray-800">Add Interview</h2>
-      <input
+
+      <select
         className="input"
-        placeholder="Job ID"
         value={form.job_id}
         onChange={(e) => setForm({ ...form, job_id: e.target.value })}
         required
-      />
+      >
+        <option value="">Select Job</option>
+        {jobs.map((job) => (
+          <option key={job.id} value={job.id}>
+            {job.title} — {job.company}
+          </option>
+        ))}
+      </select>
+
       <input
         className="input"
         type="date"
@@ -57,7 +81,7 @@ export default function InterviewForm({ onAdded }) {
       />
       <input
         className="input"
-        placeholder="Email"
+        placeholder="Contact Email"
         value={form.email}
         onChange={(e) => setForm({ ...form, email: e.target.value })}
       />
