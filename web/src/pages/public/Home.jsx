@@ -1,27 +1,98 @@
 import { Link } from "react-router-dom";
+import "../../styles/Home.css"; // external CSS
+import { motion } from "framer-motion";
+import { Briefcase, CalendarDays, ChartLine } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center p-8 md:p-16 bg-gray-50">
-      <div className="md:w-1/2 text-center md:text-left space-y-6">
-        <h1 className="text-4xl font-bold text-gray-800">
-          Track your job applications easily 🚀
-        </h1>
-        <p className="text-gray-600 text-lg">
-          For storing your data & tracking everything — please Login or Sign Up.
-        </p>
-        <div className="space-x-4">
-          <Link to="/signup" className="bg-green-600 text-white px-6 py-3 rounded shadow hover:bg-green-700">
-            Get Started
-          </Link>
-          <Link to="/login" className="bg-indigo-600 text-white px-6 py-3 rounded shadow hover:bg-indigo-700">
-            Login
-          </Link>
-        </div>
-      </div>
-      <div className="md:w-1/2 mt-10 md:mt-0">
-        <img src="https://illustrations.popsy.co/green/data-flow.svg" alt="Job Tracker" className="rounded-lg shadow-lg"/>
-      </div>
+    <div className="home-container">
+      {/* HERO */}
+      <section className="hero-section">
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="hero-title">Stay Organized. Land Your Dream Job.</h1>
+          <p className="hero-subtitle">
+            Job Tracker helps you keep every job application, interview, and offer
+            neatly organized — so you can focus on getting hired.
+          </p>
+
+          <div className="hero-buttons">
+            <Link to="/login" className="btn-primary">Get Started</Link>
+            <Link to="/about" className="btn-secondary">Learn More</Link>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="features-section">
+        <motion.div
+          className="feature-card"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Briefcase className="feature-icon icon-blue" size={42} />
+          <h3>Track Applications</h3>
+          <p>Log where you’ve applied, when, and keep notes on follow-ups & feedback.</p>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <CalendarDays className="feature-icon icon-green" size={42} />
+          <h3>Manage Interviews</h3>
+          <p>Never miss an interview. Store details, reminders, and recruiter contacts.</p>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChartLine className="feature-icon icon-yellow" size={42} />
+          <h3>View Your Progress</h3>
+          <p>Visualize your job search journey with stats and performance insights.</p>
+        </motion.div>
+      </section>
+
+      {/* CTA */}
+      <motion.section
+        className="cta-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        <h2>Ready to organize your career journey?</h2>
+        <Link to="/signup" className="btn-primary cta-btn">
+          Create Free Account
+        </Link>
+      </motion.section>
+
+      <section className="why-section">
+  <h2>Why Choose JobTracker?</h2>
+  <div className="why-grid">
+    <div className="why-card">
+      <h3>🧭 Stay Organized</h3>
+      <p>Keep every job application and interview neatly tracked in one place.</p>
+    </div>
+    <div className="why-card">
+      <h3>⏰ Save Time</h3>
+      <p>Stop digging through emails — find all your job details instantly.</p>
+    </div>
+    <div className="why-card">
+      <h3>📈 See Progress</h3>
+      <p>Understand your application trends with clean dashboards and charts.</p>
+    </div>
+  </div>
+</section>
+
+
+      <footer className="footer">© {new Date().getFullYear()} Job Tracker | Made with ❤️ by You</footer>
     </div>
   );
 }

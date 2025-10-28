@@ -5,22 +5,14 @@ import Navbar from "./components/Navbar";
 // Public Pages
 import Login from "./pages/public/Login";
 import Signup from "./pages/public/Signup";
+import Home from "./pages/public/Home";
 
 // Private Pages
 import Dashboard from "./pages/private/Dashboard";
 import Jobs from "./pages/private/Jobs";
 import Interview from "./pages/private/Interview";
 
-function Home() {
-  return (
-    <div className="text-center mt-10">
-      <h1 className="text-3xl font-bold mb-2">🏠 Welcome to Job Tracker</h1>
-      <p className="text-gray-600">
-        Track all your job applications and interviews easily!
-      </p>
-    </div>
-  );
-}
+
 
 function About() {
   return (
@@ -51,6 +43,8 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/" element={<Home />} />
+
 
             {/* Private */}
             <Route
