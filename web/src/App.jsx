@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/public/Login";
 import Signup from "./pages/public/Signup";
 import Home from "./pages/public/Home";
+import About from "./pages/public/About";
 import "aos/dist/aos.css";
 
 // Private Pages
@@ -15,16 +16,7 @@ import Interview from "./pages/private/Interview";
 
 
 
-function About() {
-  return (
-    <div className="text-center mt-10">
-      <h1 className="text-3xl font-bold mb-2">ℹ️ About Job Tracker</h1>
-      <p className="text-gray-600">
-        This app helps you organize job applications and stay on top of follow-ups.
-      </p>
-    </div>
-  );
-}
+
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
@@ -45,6 +37,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
 
 
 
