@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/public/Login";
 import Signup from "./pages/public/Signup";
 import Home from "./pages/public/Home";
+import "aos/dist/aos.css";
 
 // Private Pages
 import Dashboard from "./pages/private/Dashboard";
@@ -44,6 +45,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/" element={<Home />} />
+
 
 
             {/* Private */}
