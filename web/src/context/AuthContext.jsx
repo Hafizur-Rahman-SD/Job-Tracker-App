@@ -22,16 +22,23 @@ export default function AuthProvider({ children }) {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  const logout = async () => {
-    await supabase.auth.signOut();
-    setUser(null);
+  // Logout function
+  const signOut = async () => {
+    try {
+      await supabase.auth.signOut();
+      setUser(null);
+      console.log("User logged out successfully");
+    } catch (error) {
+      console.error("Logout error:", error.message);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout }}>
+    <AuthContext.Provider value={{ user, loading, signOut }}>
       {children}
     </AuthContext.Provider>
   );
 }
 
+// Custom hook (no changes needed)
 export const useAuth = () => useContext(AuthContext);
