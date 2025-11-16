@@ -12,7 +12,7 @@
   margin-top: 80px;
   padding: 2rem;
   background: radial-gradient(circle at 30% 20%, #e0e7ff, transparent 60%),
-              radial-gradient(circle at 80% 80%, #c7d2fe, transparent 50%);
+    radial-gradient(circle at 80% 80%, #c7d2fe, transparent 50%);
   border-radius: 20px;
   max-width: 900px;
   margin-left: auto;
@@ -46,9 +46,11 @@
   font-weight: 600;
   transition: all 0.3s;
 }
+
 .btn-primary:hover {
   background: #1d4ed8;
 }
+
 .btn-secondary {
   background: white;
   color: #2563eb;
@@ -58,6 +60,7 @@
   font-weight: 600;
   transition: all 0.3s;
 }
+
 .btn-secondary:hover {
   background: #2563eb;
   color: white;
@@ -72,18 +75,21 @@
   margin: 80px auto;
   padding: 0 1rem;
 }
+
 .feature-card {
   background: white;
   border-radius: 16px;
   padding: 1.8rem;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .feature-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+
 .feature-card h3 {
   font-weight: 700;
   color: #1e3a8a;
@@ -95,6 +101,7 @@
   text-align: center;
   margin: 60px 0;
 }
+
 .cta-section h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -108,19 +115,22 @@
   margin: 60px 0;
   flex-wrap: wrap;
 }
+
 .stat {
   background: white;
   border-radius: 16px;
   padding: 1.5rem 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   text-align: center;
   min-width: 150px;
 }
+
 .stat h3 {
   font-size: 2rem;
   font-weight: 800;
   color: #2563eb;
 }
+
 .stat p {
   color: #6b7280;
 }
@@ -130,6 +140,7 @@
   text-align: center;
   margin-top: 80px;
 }
+
 .why-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -137,13 +148,15 @@
   max-width: 1000px;
   margin: 2rem auto 0;
 }
+
 .why-card {
   background: white;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
 }
+
 .why-card:hover {
   transform: translateY(-5px);
 }
@@ -161,9 +174,11 @@
   .hero-title {
     font-size: 1.9rem;
   }
+
   .features-section {
     gap: 1rem;
   }
+
   .stat {
     min-width: 120px;
   }
